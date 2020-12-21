@@ -6,21 +6,27 @@ import java.util.*;
 
 public class ModelRepository {
 
-//    private Model model = new Model();
-
-    private ArrayList<Model> modelList ;
+    private Hashtable<String, Model> models ;
 
     public ModelRepository(){
-        modelList = new ArrayList<Model>();
+        models = new Hashtable<String, Model>();
+        this.addModel(new Model());
     };
 
-    public ArrayList<Model> getModelList() {
-        return modelList;
+    public Hashtable<String, Model> getModels(){
+        return this.models;
     }
 
-    public void setModelList(ArrayList<Model> modelList) {
-        this.modelList = modelList;
+    public Model getModel(String modelId) {
+        if (models.get(modelId) != null){
+            return models.get(modelId);
+        } else{
+            return new Model();
+        }
     }
 
+    public void addModel(Model model) {
+        this.models.put(model.getModelId(), model);
+    }
 
 }

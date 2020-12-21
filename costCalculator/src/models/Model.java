@@ -5,7 +5,9 @@ public class Model {
     private String modelId;
     private int timeFactor; //per hour
 
-    public Model(){}
+    public Model(){
+        this.timeFactor = 500;
+    }
 
     public Model(String modelId, int timeFactor){
         this.modelId = modelId;
@@ -29,7 +31,7 @@ public class Model {
     }
 
     public int getModelTimeFactor(String modelId){
-        if (this.modelId == modelId){
+        if (this.modelId.equals(modelId)){
             return this.timeFactor;
         } else {
             return 300; //global time factor

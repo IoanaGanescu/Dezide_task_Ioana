@@ -14,6 +14,8 @@ public class Main {
         System.out.println(calculator(2,3,6));
 
 
+
+
         //main input:
         //time - minutes
         //money - int
