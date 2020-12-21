@@ -6,6 +6,7 @@ public class Model {
     private int timeFactor; //per hour
 
     public Model(){
+        this.modelId = "";
         this.timeFactor = 500;
     }
 

@@ -9,33 +9,18 @@ public class CostCalculator {
     }
 
     public static void main(String[] args) {
-        // write your code here
 
         Model model = new Model("model1234", 500);
+
+        ModelRepository models = new ModelRepository();
+
+        models.addModel(model);
 
         TimeValue time = new TimeValue(0.5f);
 
         MoneyValue money = new MoneyValue(275.5f);
 
-
-        System.out.println(model.getTimeFactor());
-        System.out.println(Math.round(calculator(time, model.getTimeFactor(), money)));
-
-
-        //main input:
-        //time - minutes
-        //money - int
-        //modelId - string
-
-        //calculator elements:
-        //time - hours
-        //timeFactor - global/local_per_id per hour
-        //money - int
-
-        //calculator parameters:
-        //time - minutes
-        //money
-
+        System.out.println(Math.round(calculator(time, models.getModel(model.getModelId()).getTimeFactor(), money)));
 
     }
 }
