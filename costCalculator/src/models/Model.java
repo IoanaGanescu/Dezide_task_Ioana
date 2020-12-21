@@ -30,11 +30,4 @@ public class Model {
         this.timeFactor = timeFactor;
     }
 
-    public int getModelTimeFactor(String modelId){
-        if (this.modelId.equals(modelId)){
-            return this.timeFactor;
-        } else {
-            return 300; //global time factor
-        }
-    }
 }

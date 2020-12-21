@@ -2,17 +2,17 @@ package models;
 
 public class MoneyValue {
 
-    private int cost;
+    private float cost;
 
-    public MoneyValue(int cost){
+    public MoneyValue(float cost){
         this.cost = cost;
     }
 
-    public int getCost() {
+    public float getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(float cost) {
         this.cost = cost;
     }
 }

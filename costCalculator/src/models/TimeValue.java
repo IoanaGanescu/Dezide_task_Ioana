@@ -2,19 +2,19 @@ package models;
 
 public class TimeValue {
 
-    private int minutes;
+    private float minutes;
     private float hours;
 
-    public TimeValue(int minutes){
+    public TimeValue(float minutes){
         this.minutes = minutes;
         this.hours = minutes/60F;
     }
 
-    public int getMinutes() {
+    public float getMinutes() {
         return minutes;
     }
 
-    public void setMinutes(int minutes) {
+    public void setMinutes(float minutes) {
         this.minutes = minutes;
     }
 
