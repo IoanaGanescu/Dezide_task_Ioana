@@ -26,14 +26,30 @@ public class Main {
         //add the "model1234" object in the hashtable
         models.addModel(model1);
 
-        //instantiate a TimeValue object using the console value
-        TimeValue time = new TimeValue(Float.parseFloat(consoleTime));
+        //declare time and money objects that will be instantiated with console values
+        TimeValue time;
+        MoneyValue money;
 
-        //instantiate a MoneyValue object using the console value
-        MoneyValue money = new MoneyValue(Float.parseFloat(consoleMoney));
+        //try-catch block to catch a possible parse error
+        try {
+            //instantiate a TimeValue object using the console value
+            time = new TimeValue(Float.parseFloat(consoleTime));
+        } catch(Exception e){
+            System.out.println("The time value you inserted " + consoleTime + " is not a number! Please try again.");
+            return;
+        }
+
+        //try-catch block to catch a possible parse error
+        try {
+            //instantiate a MoneyValue object using the console value
+            money = new MoneyValue(Float.parseFloat(consoleMoney));
+        } catch (Exception e){
+            System.out.println("The money value you inserted " + consoleMoney + " is not a number! Please try again.");
+            return;
+        }
 
         //calculate the float result using the CostCalculator object previously instantiated
-        float res = calculator.calculator(time, models.getModel(consoleModelId), money);
+        float res = calculator.calculate(time, models.getModel(consoleModelId), money);
 
         //print the rounded to the nearest whole number result - Yay!
         System.out.println(Math.round(res));

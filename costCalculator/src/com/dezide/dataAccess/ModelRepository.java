@@ -9,7 +9,7 @@ public class ModelRepository {
 
     private Hashtable<String, Model> models ;
 
-    //constructor - initializes a hashtable
+    //constructor - initializes a hashtable of Models with String as key
     public ModelRepository(){
         models = new Hashtable<String, Model>();
     };
@@ -23,7 +23,7 @@ public class ModelRepository {
     public Model getModel(String modelId) {
         if (models.get(modelId) != null){
             return models.get(modelId);
-        } else{
+        } else {
             System.out.println("Could not find model ID " + modelId + ". Using global time factor.");
             return new Model();
         }

@@ -7,11 +7,8 @@ import com.dezide.models.TimeValue;
 //CostCalculator class
 public class CostCalculator {
 
-    //empty constructor
-    public CostCalculator(){}
-
     //calculator function - uses the given parameters to calculate the correct timeFactor and then return the total cost
-    public float calculator(TimeValue time, Model model, MoneyValue money) {
+    public float calculate(TimeValue time, Model model, MoneyValue money) {
 
         float timeFactor = model.getTimeFactor();
 
