@@ -1,9 +1,13 @@
 package com.dezide;
 
 import com.dezide.dataAccess.ModelRepository;
+import com.dezide.models.CustomCost;
 import com.dezide.models.Model;
 import com.dezide.models.MoneyValue;
 import com.dezide.models.TimeValue;
+
+import java.util.Hashtable;
+import java.util.Locale;
 
 public class Main {
 
@@ -19,6 +23,9 @@ public class Main {
 
         //instantiate the "model1234" ID model object
         Model model1 = new Model("model1234", 500);
+
+        model1.setRiskCost(new CustomCost("risk", "high"));
+        model1.setInconvenienceCost(new CustomCost("inconvenience", "medium"));
 
         //instantiate the models hashtable
         ModelRepository models = new ModelRepository();
@@ -53,6 +60,35 @@ public class Main {
 
         //print the rounded to the nearest whole number result - Yay!
         System.out.println(Math.round(res));
+
+
+
+        Hashtable<String, CustomCost> optionalCosts = new Hashtable<>();
+
+        if (args.length > 3){
+            for (int i=3; i < args.length; i++){
+                String optionalParameter = args[i];
+
+                try {
+                    String optionalCostType = optionalParameter.split(":")[0].toLowerCase(Locale.ROOT);
+                    String optionalCostValue = optionalParameter.split(":")[1].toLowerCase(Locale.ROOT);
+
+                    if (models.getModel(consoleModelId) != null){
+                        if (!models.getModel(consoleModelId).getCost(optionalCostType).getValue().equals(optionalCostValue)){
+                            models.getModel(consoleModelId).getCost(optionalCostType).setValue(optionalCostValue);
+                        }
+                    }
+
+                    optionalCosts.put(optionalCostType, new CustomCost(optionalCostType, optionalCostValue));
+
+                    System.out.println(optionalCostType);
+                    System.out.println(optionalCostValue);
+                } catch (Exception e){
+                    System.out.println("The optional customer cost " + optionalParameter + " is not in the <name>:<value> format. Please try again.");
+                    return;
+                }
+            }
+        }
 
     }
 }
