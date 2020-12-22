@@ -14,11 +14,6 @@ public class ModelRepository {
         models = new Hashtable<String, Model>();
     };
 
-    //get all models in the hashtable
-    public Hashtable<String, Model> getModels(){
-        return this.models;
-    }
-
     //get a model based on its ID
     public Model getModel(String modelId) {
         if (models.get(modelId) != null){

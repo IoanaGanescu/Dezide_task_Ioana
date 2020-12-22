@@ -59,33 +59,33 @@ public class Main {
         float res = calculator.calculate(time, models.getModel(consoleModelId), money);
 
         //print the rounded to the nearest whole number result - Yay!
+        System.out.println("Task #1");
         System.out.println(Math.round(res));
 
 
-
-        Hashtable<String, CustomCost> optionalCosts = new Hashtable<>();
-
+        // Task #2
+        // If there's more than 3 arguments, then we're dealing with optional customer-specific costs
         if (args.length > 3){
+
+            //So we iterate through them
             for (int i=3; i < args.length; i++){
                 String optionalParameter = args[i];
 
+                //And if they're in the correct <name>:<value> form we proceed with the calculation
                 try {
                     String optionalCostType = optionalParameter.split(":")[0].toLowerCase(Locale.ROOT);
                     String optionalCostValue = optionalParameter.split(":")[1].toLowerCase(Locale.ROOT);
 
+                    //We're looking in the model list, searching for the console-given model ID
                     if (models.getModel(consoleModelId) != null){
+
+                        //If found, we check if the additional custom costs values within the model are different than what we got from the command line;
+                        //If yes, we set them to be the new ones.
                         if (!models.getModel(consoleModelId).getCost(optionalCostType).getValue().equals(optionalCostValue)){
                             models.getModel(consoleModelId).getCost(optionalCostType).setValue(optionalCostValue);
                         }
                     }
-//                    else {
-//                        System.out.println("No model ID " + consoleModelId + " was found. Using global default values.");
-//                    }
 
-                    optionalCosts.put(optionalCostType, new CustomCost(optionalCostType, optionalCostValue));
-
-                    System.out.println(optionalCostType);
-                    System.out.println(optionalCostValue);
                 } catch (Exception e){
                     System.out.println("The optional customer cost " + optionalParameter + " is not in the correct <name>:<value> format. Please try again.");
                     return;
@@ -93,8 +93,11 @@ public class Main {
             }
         }
 
+        // Then here we call the customCostAdjustment function in CostCalculator; we give the model as a parameter to get the information about the additional costs
         float res1 = calculator.customCostAdjustments(res, models.getModel(consoleModelId));
 
+        //print the rounded to the nearest whole number result - Yay again!
+        System.out.println("Task #2");
         System.out.println(Math.round(res1));
     }
 }

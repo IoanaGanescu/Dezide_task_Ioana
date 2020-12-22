@@ -69,6 +69,7 @@ public class Model {
         this.inconvenienceCost = inconvenienceCost;
     }
 
+    //get one CustomCost based on the name
     public CustomCost getCost(String costType){
         if (costType.equals(this.riskCost.getName())){
             return riskCost;
@@ -76,6 +77,7 @@ public class Model {
             return inconvenienceCost;
     }
 
+    //get all CustomCosts of this model
     public ArrayList<CustomCost> getCosts(){
         ArrayList<CustomCost> costs = new ArrayList<>();
         costs.add(riskCost);
