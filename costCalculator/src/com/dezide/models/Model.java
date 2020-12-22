@@ -1,5 +1,9 @@
 package com.dezide.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Hashtable;
+
 // Model class - stores a model ID and a time factor;
 // Global (default) time factor is 300
 public class Model {
@@ -70,5 +74,12 @@ public class Model {
             return riskCost;
         } else
             return inconvenienceCost;
+    }
+
+    public ArrayList<CustomCost> getCosts(){
+        ArrayList<CustomCost> costs = new ArrayList<>();
+        costs.add(riskCost);
+        costs.add(inconvenienceCost);
+        return costs;
     }
 }

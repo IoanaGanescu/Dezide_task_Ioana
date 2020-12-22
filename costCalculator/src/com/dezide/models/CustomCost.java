@@ -26,12 +26,12 @@ public class CustomCost {
         this.value = value;
     }
 
-    public float getFinalCostRelativeAdjustment(String value){
-        if (value.equals("low")){
+    public float getFinalCostRelativeAdjustment(){
+        if (this.value.equals("low")){
             return 0.1f;
-        } else if (value.equals("medium")){
+        } else if (this.value.equals("medium")){
             return 0.3f;
-        } else if (value.equals("high")){
+        } else if (this.value.equals("high")){
             return 1f;
         } else
             return 0f;

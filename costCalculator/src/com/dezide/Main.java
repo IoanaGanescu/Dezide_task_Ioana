@@ -78,17 +78,23 @@ public class Main {
                             models.getModel(consoleModelId).getCost(optionalCostType).setValue(optionalCostValue);
                         }
                     }
+//                    else {
+//                        System.out.println("No model ID " + consoleModelId + " was found. Using global default values.");
+//                    }
 
                     optionalCosts.put(optionalCostType, new CustomCost(optionalCostType, optionalCostValue));
 
                     System.out.println(optionalCostType);
                     System.out.println(optionalCostValue);
                 } catch (Exception e){
-                    System.out.println("The optional customer cost " + optionalParameter + " is not in the <name>:<value> format. Please try again.");
+                    System.out.println("The optional customer cost " + optionalParameter + " is not in the correct <name>:<value> format. Please try again.");
                     return;
                 }
             }
         }
 
+        float res1 = calculator.customCostAdjustments(res, models.getModel(consoleModelId));
+
+        System.out.println(Math.round(res1));
     }
 }
